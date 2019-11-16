@@ -24,11 +24,6 @@
 
 		<dependency>
 			<groupId>vn.edu.topica.edumall</groupId>
-			<artifactId>orm-data-model</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>vn.edu.topica.edumall</groupId>
 			<artifactId>rest-common-api</artifactId>
 		</dependency>
 
@@ -36,18 +31,6 @@
 			<groupId>org.springframework.security.oauth</groupId>
 			<artifactId>spring-security-oauth2</artifactId>
 			<version>2.0.16.RELEASE</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-jwt</artifactId>
-			<version>1.0.9.RELEASE</version>
-		</dependency>
-
-		<dependency>
-			<groupId>io.jsonwebtoken</groupId>
-			<artifactId>jjwt</artifactId>
-			<version>0.9.1</version>
 		</dependency>
 
 		<dependency>

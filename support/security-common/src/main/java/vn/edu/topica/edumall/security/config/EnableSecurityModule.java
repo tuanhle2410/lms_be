@@ -7,10 +7,8 @@ import java.lang.annotation.Target;
 
 import org.springframework.context.annotation.Import;
 
-import vn.edu.topica.edumall.security.config.auto.AutoConfigurationDefaultMode;
 
-@Import({JdbcTokenBaseConfig.class, ModuleConfiguration.class, AutoConfigurationDefaultMode.class,
-        JwtTokenBaseConfig.class, SSOTokenBaseConfig.class})
+@Import({ModuleConfiguration.class, SSOTokenBaseConfig.class})
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
 public @interface EnableSecurityModule {

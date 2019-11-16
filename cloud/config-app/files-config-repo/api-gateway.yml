@@ -42,10 +42,6 @@ zuul:
       stripPrefix: true
       path: /api/lms/mobile/**
       serviceId: lms-api-mobile-middleware
-    lms-api:
-      stripPrefix: true
-      path: /api/lms/test/**
-      serviceId: lms-api-service
 
 
 ---

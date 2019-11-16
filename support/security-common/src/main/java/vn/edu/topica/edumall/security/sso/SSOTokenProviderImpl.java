@@ -11,20 +11,16 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Profile;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Component;
-import vn.edu.topica.edumall.data.model.User;
 import vn.edu.topica.edumall.security.core.filter.TokenProvider;
 import vn.edu.topica.edumall.security.core.model.SSOUserInfo;
 import vn.edu.topica.edumall.security.core.model.UserPrincipal;
-import vn.edu.topica.edumall.security.core.payload.UserToken;
-import vn.edu.topica.edumall.security.core.service.LmsUserService;
-import vn.edu.topica.edumall.security.jdbc.repository.UserRepository;
+import vn.edu.topica.edumall.security.core.service.LmsUserDetailService;
+
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -35,27 +31,10 @@ import java.net.URISyntaxException;
 public class SSOTokenProviderImpl implements TokenProvider {
 
     @Autowired
-    @Qualifier("lmsUserDetailService")
-    UserDetailsService userDetailsService;
+    LmsUserDetailService userDetailsService;
 
     @Value("${sso.url.get-user-info}")
     String ssoUrlGetUserInfo;
-
-    @Autowired
-    LmsUserService lmsUserService;
-
-    @Autowired
-    UserRepository userRepository;
-
-    @Override
-    public UserToken generateTokenWithoutCredential(String emailOrUsername) {
-        return null;
-    }
-
-    @Override
-    public UserToken generateToken(Authentication authentication) {
-        return null;
-    }
 
     @Override
     public Authentication getAuthentication(String token) {
@@ -75,14 +54,7 @@ public class SSOTokenProviderImpl implements TokenProvider {
             return null;
         }
 
-        User userFind = userRepository.findByUsernameOrEmail(ssoUserInfo.getEmail(), ssoUserInfo.getEmail()).orElse(null);
-        if (userFind == null) {
-            lmsUserService.createTeacher(ssoUserInfo, userFind);
-        } else {
-            lmsUserService.updateUserInfo(ssoUserInfo, userFind);
-        }
-
-        UserPrincipal userDetail = (UserPrincipal) userDetailsService.loadUserByUsername(email);
+        UserPrincipal userDetail = userDetailsService.loadUser(ssoUserInfo);
         return new UsernamePasswordAuthenticationToken(userDetail.getEmail(), userDetail,
                 userDetail.getAuthorities());
     }
