@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>vn.edu.topica.edumall</groupId>
+		<artifactId>lms-platform</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
+	<artifactId>run</artifactId>
+	<name>run</name>
+	<url>http://maven.apache.org</url>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+	<packaging>pom</packaging>
+	<modules>
+		<module>lms-api-service</module>
+		<module>lms-user-service</module>
+		<module>lms-authen-center</module>
+		<module>lms-api-web-middleware</module>
+		<module>lms-api-mobile-middleware</module>
+	</modules>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<!-- <dependency> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-starter-security</artifactId> 
+			</dependency> -->
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-actuator</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-sleuth</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+		</dependency>
+		<!-- With running project need to declare this to take configuration from 
+			server -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-config</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>vn.edu.topica.edumall</groupId>
+			<artifactId>orm-data-model</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>vn.edu.topica.edumall</groupId>
+			<artifactId>service-email</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>vn.edu.topica.edumall</groupId>
+			<artifactId>service-sms</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>vn.edu.topica.edumall</groupId>
+			<artifactId>service-s3</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>vn.edu.topica.edumall</groupId>
+			<artifactId>service-image-optimize</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>vn.edu.topica.edumall</groupId>
+			<artifactId>queue-common</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>vn.edu.topica.edumall</groupId>
+			<artifactId>rest-common-api</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>vn.edu.topica.edumall</groupId>
+			<artifactId>security-common</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>vn.edu.topica.edumall</groupId>
+			<artifactId>locale-module</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.modelmapper</groupId>
+			<artifactId>modelmapper</artifactId>
+			<version>2.3.5</version>
+		</dependency>
+
+	</dependencies>
+</project>

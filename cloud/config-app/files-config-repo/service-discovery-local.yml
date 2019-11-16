@@ -1,0 +1,16 @@
+server:
+   port: 8761
+eureka:
+   instance:
+      hostname: localhost
+   client:
+      healthcheck:
+         enabled: true
+      registerWithEureka: false
+      fetchRegistry: false
+logging:
+   level:
+      com:
+         netflix:
+            eureka: false
+            discovery: false

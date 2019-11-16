@@ -1,0 +1,2 @@
+server:
+  port: ${ZIPKIN_SERVER_PORT}

@@ -1,0 +1,123 @@
+aws:
+  bucket.name: edm-ecommerce
+  client.region: s3://${aws.bucket.name}
+  key:
+    access: USERNAME
+    secret: PASSWORD
+# SPRING DATA --------------------------------------------------------------------------------------
+#spring:
+#  datasource:
+#    url: jdbc:mysql://localhost:3306/lms_platform?useUnicode=yes&characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC&rewriteBatchedStatements=true
+#    username: trungnt
+#    password: trungnt2010
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+# EUREKA CLIENT CONFIG
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    healthcheck:
+      enabled: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+    registerWithEureka: true
+    fetchRegistry: true
+ribbon:
+  listOfServers: http://localhost:8890
+# LOGGING --------------------------------------------------------------------------------------
+logging:
+  level:
+    vn.edu.topica: INFO
+    org.springframework.web: INFO
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+    com.netflix:
+      discover: false
+      eureka: false
+
+# JWT --------------------------------------------------------------------------------------
+authen.jwtSecret: Basic
+authen.jwt.expiredTime: 43200
+aws.access.key.id: test
+# LIQUIBASE - DEFAULT DISABLE
+spring.liquibase:
+  enabled: false
+
+# SSO
+sso:
+  url:
+    get-user-info: http://staging-sso.edumall.vn/sso/user_info
+teacher:
+  root:
+    folder: Kho học liệu
+
+# COURSE
+course:
+  start-course-code: CO6
+  min-random-course-code: 1
+  max-random-course-code: 99999
+
+# KELLEY
+kelley:
+  url:
+    get-teacher-detail: http://kelley2-staging.edumall.io/api/teachers/detail
+    update-teacher: http://kelley2-staging.edumall.io/api/teachers/update
+    save-course: http://kelley2-staging.edumall.io/migrate/from_instructor
+    publish-course: http://kelley2-staging.edumall.io/api/courses/transcode_for_is
+    disappear-course:
+# MEDIA TOOL
+media-tool:
+  url:
+    analysic-video: http://206.189.149.24:4000/media/check
+# 192.168.62.27:3000/media/check
+# http://206.189.149.24:4000/media/check
+#http://18.139.227.246:5004/videos_analysis_env
+
+# URL_CALLBACK
+is:
+  url:
+    process-after-tool-validate: http://157.230.255.33:8890/api/lms/course-version/process-after-tool-validate
+
+# COURSE
+random-key-upload-file:
+  min-random: 1
+  max-random: 999999
+
+# THREAD(millis second: 10 minutes)
+thread:
+  check-file-upload:
+    time-sleep: 600000
+# FRONTEND
+frontend-react:
+  url:
+    view-approve-result:
+      front: /manage/course/
+      behind: /approval-result
+#todo: change cc email when run in production environment
+furion:
+  url: https://furion.edumall.io/v1/emails/send
+  uploadS3Failed:
+    templateCode: X2QZ0P
+    sender:
+      email: hoptac.edumall@topica.edu.vn
+      name: Hợp tác Edumall VN
+    cc: hoptac_test.edumall@topica.edu.vn sdf
+    subject: "[HOPTAC.EDUMALL.VN] V/V GỬI KIỂM DUYỆT KHOÁ HỌC"
+    timeSleep: 600000
+    senderName: Phòng Hợp tác Giảng viên Edumall
+    senderAddress: Công ty Cổ phần Giáo dục Topica English, 75 Phương Mai, Đống Đa
+    senderCity: Hà Nội
+    senderState: Việt Nam
+    senderZip: 100000
+  publish-course:
+    templateCodeNotifyPublishCourse: X2QZ0Q
+    subjectNotifyPublishCourse: "[HOPTAC.EDUMALL.VN] V/V PUBLISH KHÓA HỌC"
+  disappear-course:
+    templateCodeDisappearCourse: X2QZ0R
+    subjectDisappearCourse: "[HOPTAC.EDUMALL.VN] ĐỀ XUẤT TẠM ẨN KHÓA HỌC"
+
+# PERSONAL INFO
+personal-info:
+  type:
+    individual: individual
+    company: company

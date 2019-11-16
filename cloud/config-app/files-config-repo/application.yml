@@ -1,0 +1,52 @@
+server:
+   port: ${SERVER_PORT:8080}
+   error:
+      include-stacktrace: NEVER
+okhttp.timeout:
+   connection: 30
+   read: 30
+   write: 30
+# APP ----------------------------------------------------------------------------------------------
+# queue name
+app:
+   sync:
+      category.fixed.delay.in.milliseconds: 300000
+      course.fixed.delay.in.milliseconds: 60000
+      user.fixed.delay.in.milliseconds: 600000
+      flashsale.fixed.delay.in.milliseconds: 60000
+# Zipkin Server --------------------------------
+spring:
+   zipkin:
+      base-url: ${ZIPKIN_SERVER_URI}
+      sender:
+         type: web
+   cloud:
+      config:
+         request-read-timeout: 20000
+         request-connect-timeout: 20000
+   # SPRING HTTP MULTIPART CONFIG --------------------------------------------------------------------
+   servlet:
+      multipart:
+         max-file-size: 3072MB
+         max-request-size: 3072MB
+# Liquibase:  
+spring.liquibase:
+   enabled: false
+# LOGGING ------------------------------------------------------------------------------------------
+logging:
+   level:
+      vn.edu.topica: INFO
+      org.springframework.web: INFO
+      org.hibernate.SQL: DEBUG
+      org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+# DATASOURCE
+#spring.datasource:
+#   url: jdbc:mysql://localhost/test
+#   username: trungnt
+#   password: trungnt2010
+#   driver-class-name: com.mysql.cj.jdbc.Driver
+---
+spring:
+   profiles: local
+eureka:
+   port: 8761

@@ -1,0 +1,911 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <changeSet author="trungnt (generated)" id="1567497891755-1">
+        <createTable tableName="asset">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="created_at" type="datetime(6)"/>
+            <column name="updated_at" type="datetime(6)"/>
+            <column name="asset_type" type="INT"/>
+            <column name="transcode_url" type="VARCHAR(100)"/>
+            <column name="file_id" type="BIGINT"/>
+            <column name="lecture_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567497891755-2">
+        <createTable tableName="category">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="created_at" type="datetime(6)"/>
+            <column name="updated_at" type="datetime(6)"/>
+            <column name="alias" type="VARCHAR(50)"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="url" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567497891755-3">
+        <createTable tableName="chapter">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="created_at" type="datetime(6)"/>
+            <column name="updated_at" type="datetime(6)"/>
+            <column name="chapter_order" type="INT"/>
+            <column name="title" type="VARCHAR(255)"/>
+            <column name="course_version_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567497891755-4">
+        <createTable tableName="configuration">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="created_at" type="datetime(6)"/>
+            <column name="updated_at" type="datetime(6)"/>
+            <column name="config_key" type="VARCHAR(50)"/>
+            <column name="value" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567497891755-5">
+        <createTable tableName="course">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="created_at" type="datetime(6)"/>
+            <column name="updated_at" type="datetime(6)"/>
+            <column name="alias_name" type="VARCHAR(30)"/>
+            <column name="lastest_version_updated_at" type="datetime(6)"/>
+            <column name="published_at" type="datetime(6)"/>
+            <column name="status" type="INT"/>
+            <column name="release_course_version_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567497891755-6">
+        <createTable tableName="course_version">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="created_at" type="datetime(6)"/>
+            <column name="updated_at" type="datetime(6)"/>
+            <column name="background_img" type="VARCHAR(255)"/>
+            <column name="benefit" type="TEXT"/>
+            <column name="long_des" type="TEXT"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="requirement" type="TEXT"/>
+            <column name="short_des" type="TEXT"/>
+            <column name="status" type="INT"/>
+            <column name="target" type="TEXT"/>
+            <column name="thumnail_img" type="VARCHAR(255)"/>
+            <column name="course_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567497891755-7">
+        <createTable tableName="definition">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="created_at" type="datetime(6)"/>
+            <column name="updated_at" type="datetime(6)"/>
+            <column name="keyword" type="VARCHAR(100)"/>
+            <column name="long_des" type="TEXT"/>
+            <column name="short_des" type="TEXT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567497891755-8">
+        <createTable tableName="file">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="created_at" type="datetime(6)"/>
+            <column name="updated_at" type="datetime(6)"/>
+            <column name="deleted_at" type="datetime(6)"/>
+            <column name="file_extension" type="VARCHAR(255)"/>
+            <column name="file_size" type="BIGINT"/>
+            <column name="file_type" type="INT"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="object_key" type="VARCHAR(255)"/>
+            <column name="status" type="INT"/>
+            <column name="url" type="VARCHAR(255)"/>
+            <column name="folder_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567497891755-9">
+        <createTable tableName="folder">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="created_at" type="datetime(6)"/>
+            <column name="updated_at" type="datetime(6)"/>
+            <column name="deleted_at" type="datetime(6)"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="parent_folder_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567497891755-10">
+        <createTable tableName="lecture">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="created_at" type="datetime(6)"/>
+            <column name="updated_at" type="datetime(6)"/>
+            <column name="lecture_order" type="INT"/>
+            <column name="title" type="VARCHAR(30)"/>
+            <column name="chapter_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567497891755-11">
+        <createTable tableName="question">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="created_at" type="datetime(6)"/>
+            <column name="updated_at" type="datetime(6)"/>
+            <column name="answers" type="TEXT"/>
+            <column name="correct_answer" type="TEXT"/>
+            <column name="question_title" type="TEXT"/>
+            <column name="question_type" type="INT"/>
+            <column name="quiz_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567497891755-12">
+        <createTable tableName="quiz">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="created_at" type="datetime(6)"/>
+            <column name="updated_at" type="datetime(6)"/>
+            <column name="long_des" type="TEXT"/>
+            <column name="pass_score" type="INT"/>
+            <column name="quiz_duration" type="INT"/>
+            <column name="quiz_order" type="INT"/>
+            <column name="title" type="VARCHAR(30)"/>
+            <column name="chapter_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567497891755-13">
+        <createTable tableName="role">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="created_at" type="datetime(6)"/>
+            <column name="long_des" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="updated_at" type="datetime(6)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567497891755-14">
+        <createTable tableName="sub_category">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="created_at" type="datetime(6)"/>
+            <column name="updated_at" type="datetime(6)"/>
+            <column name="alias_name" type="TEXT"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="parent_category_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567497891755-15">
+        <createTable tableName="sub_category_course_version">
+            <column name="course_version_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="subcategory_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567497891755-16">
+        <createTable tableName="teacher">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="created_at" type="datetime(6)"/>
+            <column name="updated_at" type="datetime(6)"/>
+            <column name="academic_rank" type="VARCHAR(100)"/>
+            <column name="function" type="VARCHAR(100)"/>
+            <column name="long_des" type="TEXT"/>
+            <column name="major" type="VARCHAR(100)"/>
+            <column name="short_des" type="VARCHAR(100)"/>
+            <column name="work_unit" type="VARCHAR(100)"/>
+            <column name="user_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567497891755-17">
+        <createTable tableName="teacher_course">
+            <column name="teacher_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="course_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567497891755-18">
+        <createTable tableName="user">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="created_at" type="datetime(6)"/>
+            <column name="updated_at" type="datetime(6)"/>
+            <column name="email" type="VARCHAR(255)"/>
+            <column name="mobile" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="password" type="VARCHAR(255)"/>
+            <column name="username" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567497891755-19">
+        <createTable tableName="user_activity_code">
+            <column autoIncrement="true" name="id" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="created_at" type="datetime(6)"/>
+            <column name="updated_at" type="datetime(6)"/>
+            <column name="code" type="VARCHAR(20)"/>
+            <column name="long_des" type="TEXT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567497891755-20">
+        <createTable tableName="user_activity_log">
+            <column autoIncrement="true" name="id" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="created_at" type="datetime(6)"/>
+            <column name="updated_at" type="datetime(6)"/>
+            <column name="action" type="VARCHAR(50)"/>
+            <column name="activity" type="VARCHAR(50)"/>
+            <column name="activity_code" type="VARCHAR(50)"/>
+            <column name="browser" type="VARCHAR(255)"/>
+            <column name="controller" type="VARCHAR(50)"/>
+            <column name="ip_address" type="VARCHAR(50)"/>
+            <column name="note" type="VARCHAR(100)"/>
+            <column name="params" type="TEXT"/>
+            <column name="user_id" type="INT"/>
+            <column name="activity_code_id" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567497891755-21">
+        <createTable tableName="user_role">
+            <column name="created_at" type="datetime(6)"/>
+            <column name="updated_at" type="datetime(6)"/>
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="role_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567497891755-22">
+        <createTable tableName="warehouse">
+            <column autoIncrement="true" name="id" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="root_folder_id" type="BIGINT"/>
+            <column name="teacher_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567497891755-23">
+        <addPrimaryKey columnNames="role_id, user_id" constraintName="PRIMARY" tableName="user_role"/>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567497891755-24">
+        <createIndex indexName="FK4l2wamhfrbqkmmoskd1x07hej" tableName="sub_category_course_version">
+            <column name="subcategory_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567497891755-25">
+        <createIndex indexName="FK51ogjvg364lh10nwxrwu9uwgh" tableName="warehouse">
+            <column name="root_folder_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567497891755-26">
+        <createIndex indexName="FK57g7veis1gp5wn3g0mp0x57pl" tableName="folder">
+            <column name="parent_folder_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567497891755-27">
+        <createIndex indexName="FK5xky54s180gxknfipe3aprucf" tableName="user_activity_log">
+            <column name="activity_code_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567497891755-28">
+        <createIndex indexName="FK6yglm1887hjjbrm60ll1eg2fv" tableName="course_version">
+            <column name="course_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567497891755-29">
+        <createIndex indexName="FK7njm7khxfu7daert7tc5eo0p9" tableName="chapter">
+            <column name="course_version_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567497891755-30">
+        <createIndex indexName="FK859n2jvi8ivhui0rl0esws6o" tableName="user_role">
+            <column name="user_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567497891755-31">
+        <createIndex indexName="FK9lyeevh4v812hf13y51axfk6s" tableName="asset">
+            <column name="file_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567497891755-32">
+        <createIndex indexName="FKaleldsg7yww5as540ld8iwghe" tableName="teacher_course">
+            <column name="teacher_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567497891755-33">
+        <createIndex indexName="FKawdglurlxuavvtgtwg7h5y6v8" tableName="quiz">
+            <column name="chapter_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567497891755-34">
+        <createIndex indexName="FKb0yh0c1qaxfwlcnwo9dms2txf" tableName="question">
+            <column name="quiz_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567497891755-35">
+        <createIndex indexName="FKdfgd9qovcgebjry9mynttnijc" tableName="file">
+            <column name="folder_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567497891755-36">
+        <createIndex indexName="FKet61623m8343d3lrar5xu1fub" tableName="sub_category_course_version">
+            <column name="course_version_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567497891755-37">
+        <createIndex indexName="FKgbenhmddown3ra94x7a0u3w5y" tableName="sub_category">
+            <column name="parent_category_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567497891755-38">
+        <createIndex indexName="FKgwjttitp76ci22ay2ykuy4uvc" tableName="warehouse">
+            <column name="teacher_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567497891755-39">
+        <createIndex indexName="FKj18ul5unaxh6eic0glg2wd1xr" tableName="course">
+            <column name="release_course_version_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567497891755-40">
+        <createIndex indexName="FKk912p0rsmfkhgk3pyeuaxckvm" tableName="lecture">
+            <column name="chapter_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567497891755-41">
+        <createIndex indexName="FKlcm4ohrbjmvf3y2p7tgjhurmf" tableName="asset">
+            <column name="lecture_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567497891755-42">
+        <createIndex indexName="FKp8bco6842vkqh13y4759ib7tk" tableName="teacher_course">
+            <column name="course_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567497891755-43">
+        <createIndex indexName="FKpb6g6pahj1mr2ijg92r7m1xlh" tableName="teacher">
+            <column name="user_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567497891755-44">
+        <addForeignKeyConstraint baseColumnNames="subcategory_id" baseTableName="sub_category_course_version" constraintName="FK4l2wamhfrbqkmmoskd1x07hej" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="sub_category"/>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567497891755-45">
+        <addForeignKeyConstraint baseColumnNames="root_folder_id" baseTableName="warehouse" constraintName="FK51ogjvg364lh10nwxrwu9uwgh" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="folder"/>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567497891755-46">
+        <addForeignKeyConstraint baseColumnNames="parent_folder_id" baseTableName="folder" constraintName="FK57g7veis1gp5wn3g0mp0x57pl" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="folder"/>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567497891755-47">
+        <addForeignKeyConstraint baseColumnNames="activity_code_id" baseTableName="user_activity_log" constraintName="FK5xky54s180gxknfipe3aprucf" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user_activity_code"/>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567497891755-48">
+        <addForeignKeyConstraint baseColumnNames="course_id" baseTableName="course_version" constraintName="FK6yglm1887hjjbrm60ll1eg2fv" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="course"/>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567497891755-49">
+        <addForeignKeyConstraint baseColumnNames="course_version_id" baseTableName="chapter" constraintName="FK7njm7khxfu7daert7tc5eo0p9" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="course_version"/>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567497891755-50">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="user_role" constraintName="FK859n2jvi8ivhui0rl0esws6o" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user"/>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567497891755-51">
+        <addForeignKeyConstraint baseColumnNames="file_id" baseTableName="asset" constraintName="FK9lyeevh4v812hf13y51axfk6s" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="file"/>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567497891755-52">
+        <addForeignKeyConstraint baseColumnNames="role_id" baseTableName="user_role" constraintName="FKa68196081fvovjhkek5m97n3y" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="role"/>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567497891755-53">
+        <addForeignKeyConstraint baseColumnNames="teacher_id" baseTableName="teacher_course" constraintName="FKaleldsg7yww5as540ld8iwghe" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="teacher"/>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567497891755-54">
+        <addForeignKeyConstraint baseColumnNames="chapter_id" baseTableName="quiz" constraintName="FKawdglurlxuavvtgtwg7h5y6v8" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="chapter"/>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567497891755-55">
+        <addForeignKeyConstraint baseColumnNames="quiz_id" baseTableName="question" constraintName="FKb0yh0c1qaxfwlcnwo9dms2txf" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="quiz"/>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567497891755-56">
+        <addForeignKeyConstraint baseColumnNames="folder_id" baseTableName="file" constraintName="FKdfgd9qovcgebjry9mynttnijc" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="folder"/>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567497891755-57">
+        <addForeignKeyConstraint baseColumnNames="course_version_id" baseTableName="sub_category_course_version" constraintName="FKet61623m8343d3lrar5xu1fub" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="course_version"/>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567497891755-58">
+        <addForeignKeyConstraint baseColumnNames="parent_category_id" baseTableName="sub_category" constraintName="FKgbenhmddown3ra94x7a0u3w5y" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="category"/>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567497891755-59">
+        <addForeignKeyConstraint baseColumnNames="teacher_id" baseTableName="warehouse" constraintName="FKgwjttitp76ci22ay2ykuy4uvc" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="teacher"/>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567497891755-60">
+        <addForeignKeyConstraint baseColumnNames="release_course_version_id" baseTableName="course" constraintName="FKj18ul5unaxh6eic0glg2wd1xr" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="course_version"/>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567497891755-61">
+        <addForeignKeyConstraint baseColumnNames="chapter_id" baseTableName="lecture" constraintName="FKk912p0rsmfkhgk3pyeuaxckvm" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="chapter"/>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567497891755-62">
+        <addForeignKeyConstraint baseColumnNames="lecture_id" baseTableName="asset" constraintName="FKlcm4ohrbjmvf3y2p7tgjhurmf" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="lecture"/>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567497891755-63">
+        <addForeignKeyConstraint baseColumnNames="course_id" baseTableName="teacher_course" constraintName="FKp8bco6842vkqh13y4759ib7tk" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="course"/>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567497891755-64">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="teacher" constraintName="FKpb6g6pahj1mr2ijg92r7m1xlh" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user"/>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567504636271-1">
+        <createTable tableName="asset">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="created_at" type="datetime(6)"/>
+            <column name="updated_at" type="datetime(6)"/>
+            <column name="asset_type" type="INT"/>
+            <column name="transcode_url" type="VARCHAR(100)"/>
+            <column name="file_id" type="BIGINT"/>
+            <column name="lecture_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567504636271-2">
+        <createTable tableName="category">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="created_at" type="datetime(6)"/>
+            <column name="updated_at" type="datetime(6)"/>
+            <column name="alias" type="VARCHAR(50)"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="url" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567504636271-3">
+        <createTable tableName="chapter">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="created_at" type="datetime(6)"/>
+            <column name="updated_at" type="datetime(6)"/>
+            <column name="chapter_order" type="INT"/>
+            <column name="title" type="VARCHAR(255)"/>
+            <column name="course_version_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567504636271-4">
+        <createTable tableName="configuration">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="created_at" type="datetime(6)"/>
+            <column name="updated_at" type="datetime(6)"/>
+            <column name="config_key" type="VARCHAR(50)"/>
+            <column name="value" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567504636271-5">
+        <createTable tableName="course">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="created_at" type="datetime(6)"/>
+            <column name="updated_at" type="datetime(6)"/>
+            <column name="alias_name" type="VARCHAR(30)"/>
+            <column name="lastest_version_updated_at" type="datetime(6)"/>
+            <column name="published_at" type="datetime(6)"/>
+            <column name="status" type="INT"/>
+            <column name="release_course_version_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567504636271-6">
+        <createTable tableName="course_version">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="created_at" type="datetime(6)"/>
+            <column name="updated_at" type="datetime(6)"/>
+            <column name="background_img" type="VARCHAR(255)"/>
+            <column name="benefit" type="TEXT"/>
+            <column name="long_des" type="TEXT"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="requirement" type="TEXT"/>
+            <column name="short_des" type="TEXT"/>
+            <column name="status" type="INT"/>
+            <column name="target" type="TEXT"/>
+            <column name="thumnail_img" type="VARCHAR(255)"/>
+            <column name="course_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567504636271-7">
+        <createTable tableName="definition">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="created_at" type="datetime(6)"/>
+            <column name="updated_at" type="datetime(6)"/>
+            <column name="keyword" type="VARCHAR(100)"/>
+            <column name="long_des" type="TEXT"/>
+            <column name="short_des" type="TEXT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567504636271-8">
+        <createTable tableName="file">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="created_at" type="datetime(6)"/>
+            <column name="updated_at" type="datetime(6)"/>
+            <column name="deleted_at" type="datetime(6)"/>
+            <column name="file_extension" type="VARCHAR(255)"/>
+            <column name="file_size" type="BIGINT"/>
+            <column name="file_type" type="INT"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="object_key" type="VARCHAR(255)"/>
+            <column name="status" type="INT"/>
+            <column name="url" type="VARCHAR(255)"/>
+            <column name="folder_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567504636271-9">
+        <createTable tableName="folder">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="created_at" type="datetime(6)"/>
+            <column name="updated_at" type="datetime(6)"/>
+            <column name="deleted_at" type="datetime(6)"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="parent_folder_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567504636271-10">
+        <createTable tableName="lecture">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="created_at" type="datetime(6)"/>
+            <column name="updated_at" type="datetime(6)"/>
+            <column name="lecture_order" type="INT"/>
+            <column name="title" type="VARCHAR(30)"/>
+            <column name="chapter_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567504636271-11">
+        <createTable tableName="question">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="created_at" type="datetime(6)"/>
+            <column name="updated_at" type="datetime(6)"/>
+            <column name="answers" type="TEXT"/>
+            <column name="correct_answer" type="TEXT"/>
+            <column name="question_title" type="TEXT"/>
+            <column name="question_type" type="INT"/>
+            <column name="quiz_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567504636271-12">
+        <createTable tableName="quiz">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="created_at" type="datetime(6)"/>
+            <column name="updated_at" type="datetime(6)"/>
+            <column name="long_des" type="TEXT"/>
+            <column name="pass_score" type="INT"/>
+            <column name="quiz_duration" type="INT"/>
+            <column name="quiz_order" type="INT"/>
+            <column name="title" type="VARCHAR(30)"/>
+            <column name="chapter_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567504636271-13">
+        <createTable tableName="role">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="created_at" type="datetime(6)"/>
+            <column name="long_des" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="updated_at" type="datetime(6)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567504636271-14">
+        <createTable tableName="sub_category">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="created_at" type="datetime(6)"/>
+            <column name="updated_at" type="datetime(6)"/>
+            <column name="alias_name" type="TEXT"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="parent_category_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567504636271-15">
+        <createTable tableName="sub_category_course_version">
+            <column name="course_version_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="subcategory_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567504636271-16">
+        <createTable tableName="teacher">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="created_at" type="datetime(6)"/>
+            <column name="updated_at" type="datetime(6)"/>
+            <column name="academic_rank" type="VARCHAR(100)"/>
+            <column name="function" type="VARCHAR(100)"/>
+            <column name="long_des" type="TEXT"/>
+            <column name="major" type="VARCHAR(100)"/>
+            <column name="short_des" type="VARCHAR(100)"/>
+            <column name="work_unit" type="VARCHAR(100)"/>
+            <column name="user_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567504636271-17">
+        <createTable tableName="teacher_course">
+            <column name="teacher_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="course_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567504636271-18">
+        <createTable tableName="user">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="created_at" type="datetime(6)"/>
+            <column name="updated_at" type="datetime(6)"/>
+            <column name="email" type="VARCHAR(255)"/>
+            <column name="mobile" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="password" type="VARCHAR(255)"/>
+            <column name="username" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567504636271-19">
+        <createTable tableName="user_activity_code">
+            <column autoIncrement="true" name="id" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="created_at" type="datetime(6)"/>
+            <column name="updated_at" type="datetime(6)"/>
+            <column name="code" type="VARCHAR(20)"/>
+            <column name="long_des" type="TEXT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567504636271-20">
+        <createTable tableName="user_activity_log">
+            <column autoIncrement="true" name="id" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="created_at" type="datetime(6)"/>
+            <column name="updated_at" type="datetime(6)"/>
+            <column name="action" type="VARCHAR(50)"/>
+            <column name="activity" type="VARCHAR(50)"/>
+            <column name="activity_code" type="VARCHAR(50)"/>
+            <column name="browser" type="VARCHAR(255)"/>
+            <column name="controller" type="VARCHAR(50)"/>
+            <column name="ip_address" type="VARCHAR(50)"/>
+            <column name="note" type="VARCHAR(100)"/>
+            <column name="params" type="TEXT"/>
+            <column name="user_id" type="INT"/>
+            <column name="activity_code_id" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567504636271-21">
+        <createTable tableName="user_role">
+            <column name="created_at" type="datetime(6)"/>
+            <column name="updated_at" type="datetime(6)"/>
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="role_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567504636271-22">
+        <createTable tableName="warehouse">
+            <column autoIncrement="true" name="id" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="root_folder_id" type="BIGINT"/>
+            <column name="teacher_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567504636271-23">
+        <addPrimaryKey columnNames="role_id, user_id" constraintName="PRIMARY" tableName="user_role"/>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567504636271-24">
+        <createIndex indexName="FK4l2wamhfrbqkmmoskd1x07hej" tableName="sub_category_course_version">
+            <column name="subcategory_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567504636271-25">
+        <createIndex indexName="FK51ogjvg364lh10nwxrwu9uwgh" tableName="warehouse">
+            <column name="root_folder_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567504636271-26">
+        <createIndex indexName="FK57g7veis1gp5wn3g0mp0x57pl" tableName="folder">
+            <column name="parent_folder_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567504636271-27">
+        <createIndex indexName="FK5xky54s180gxknfipe3aprucf" tableName="user_activity_log">
+            <column name="activity_code_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567504636271-28">
+        <createIndex indexName="FK6yglm1887hjjbrm60ll1eg2fv" tableName="course_version">
+            <column name="course_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567504636271-29">
+        <createIndex indexName="FK7njm7khxfu7daert7tc5eo0p9" tableName="chapter">
+            <column name="course_version_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567504636271-30">
+        <createIndex indexName="FK859n2jvi8ivhui0rl0esws6o" tableName="user_role">
+            <column name="user_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567504636271-31">
+        <createIndex indexName="FK9lyeevh4v812hf13y51axfk6s" tableName="asset">
+            <column name="file_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567504636271-32">
+        <createIndex indexName="FKaleldsg7yww5as540ld8iwghe" tableName="teacher_course">
+            <column name="teacher_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567504636271-33">
+        <createIndex indexName="FKawdglurlxuavvtgtwg7h5y6v8" tableName="quiz">
+            <column name="chapter_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567504636271-34">
+        <createIndex indexName="FKb0yh0c1qaxfwlcnwo9dms2txf" tableName="question">
+            <column name="quiz_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567504636271-35">
+        <createIndex indexName="FKdfgd9qovcgebjry9mynttnijc" tableName="file">
+            <column name="folder_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567504636271-36">
+        <createIndex indexName="FKet61623m8343d3lrar5xu1fub" tableName="sub_category_course_version">
+            <column name="course_version_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567504636271-37">
+        <createIndex indexName="FKgbenhmddown3ra94x7a0u3w5y" tableName="sub_category">
+            <column name="parent_category_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567504636271-38">
+        <createIndex indexName="FKgwjttitp76ci22ay2ykuy4uvc" tableName="warehouse">
+            <column name="teacher_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567504636271-39">
+        <createIndex indexName="FKj18ul5unaxh6eic0glg2wd1xr" tableName="course">
+            <column name="release_course_version_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567504636271-40">
+        <createIndex indexName="FKk912p0rsmfkhgk3pyeuaxckvm" tableName="lecture">
+            <column name="chapter_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567504636271-41">
+        <createIndex indexName="FKlcm4ohrbjmvf3y2p7tgjhurmf" tableName="asset">
+            <column name="lecture_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567504636271-42">
+        <createIndex indexName="FKp8bco6842vkqh13y4759ib7tk" tableName="teacher_course">
+            <column name="course_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567504636271-43">
+        <createIndex indexName="FKpb6g6pahj1mr2ijg92r7m1xlh" tableName="teacher">
+            <column name="user_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567504636271-44">
+        <addForeignKeyConstraint baseColumnNames="subcategory_id" baseTableName="sub_category_course_version" constraintName="FK4l2wamhfrbqkmmoskd1x07hej" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="sub_category"/>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567504636271-45">
+        <addForeignKeyConstraint baseColumnNames="root_folder_id" baseTableName="warehouse" constraintName="FK51ogjvg364lh10nwxrwu9uwgh" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="folder"/>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567504636271-46">
+        <addForeignKeyConstraint baseColumnNames="parent_folder_id" baseTableName="folder" constraintName="FK57g7veis1gp5wn3g0mp0x57pl" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="folder"/>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567504636271-47">
+        <addForeignKeyConstraint baseColumnNames="activity_code_id" baseTableName="user_activity_log" constraintName="FK5xky54s180gxknfipe3aprucf" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user_activity_code"/>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567504636271-48">
+        <addForeignKeyConstraint baseColumnNames="course_id" baseTableName="course_version" constraintName="FK6yglm1887hjjbrm60ll1eg2fv" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="course"/>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567504636271-49">
+        <addForeignKeyConstraint baseColumnNames="course_version_id" baseTableName="chapter" constraintName="FK7njm7khxfu7daert7tc5eo0p9" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="course_version"/>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567504636271-50">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="user_role" constraintName="FK859n2jvi8ivhui0rl0esws6o" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user"/>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567504636271-51">
+        <addForeignKeyConstraint baseColumnNames="file_id" baseTableName="asset" constraintName="FK9lyeevh4v812hf13y51axfk6s" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="file"/>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567504636271-52">
+        <addForeignKeyConstraint baseColumnNames="role_id" baseTableName="user_role" constraintName="FKa68196081fvovjhkek5m97n3y" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="role"/>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567504636271-53">
+        <addForeignKeyConstraint baseColumnNames="teacher_id" baseTableName="teacher_course" constraintName="FKaleldsg7yww5as540ld8iwghe" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="teacher"/>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567504636271-54">
+        <addForeignKeyConstraint baseColumnNames="chapter_id" baseTableName="quiz" constraintName="FKawdglurlxuavvtgtwg7h5y6v8" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="chapter"/>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567504636271-55">
+        <addForeignKeyConstraint baseColumnNames="quiz_id" baseTableName="question" constraintName="FKb0yh0c1qaxfwlcnwo9dms2txf" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="quiz"/>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567504636271-56">
+        <addForeignKeyConstraint baseColumnNames="folder_id" baseTableName="file" constraintName="FKdfgd9qovcgebjry9mynttnijc" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="folder"/>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567504636271-57">
+        <addForeignKeyConstraint baseColumnNames="course_version_id" baseTableName="sub_category_course_version" constraintName="FKet61623m8343d3lrar5xu1fub" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="course_version"/>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567504636271-58">
+        <addForeignKeyConstraint baseColumnNames="parent_category_id" baseTableName="sub_category" constraintName="FKgbenhmddown3ra94x7a0u3w5y" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="category"/>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567504636271-59">
+        <addForeignKeyConstraint baseColumnNames="teacher_id" baseTableName="warehouse" constraintName="FKgwjttitp76ci22ay2ykuy4uvc" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="teacher"/>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567504636271-60">
+        <addForeignKeyConstraint baseColumnNames="release_course_version_id" baseTableName="course" constraintName="FKj18ul5unaxh6eic0glg2wd1xr" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="course_version"/>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567504636271-61">
+        <addForeignKeyConstraint baseColumnNames="chapter_id" baseTableName="lecture" constraintName="FKk912p0rsmfkhgk3pyeuaxckvm" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="chapter"/>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567504636271-62">
+        <addForeignKeyConstraint baseColumnNames="lecture_id" baseTableName="asset" constraintName="FKlcm4ohrbjmvf3y2p7tgjhurmf" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="lecture"/>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567504636271-63">
+        <addForeignKeyConstraint baseColumnNames="course_id" baseTableName="teacher_course" constraintName="FKp8bco6842vkqh13y4759ib7tk" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="course"/>
+    </changeSet>
+    <changeSet author="trungnt (generated)" id="1567504636271-64">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="teacher" constraintName="FKpb6g6pahj1mr2ijg92r7m1xlh" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user"/>
+    </changeSet>
+</databaseChangeLog>

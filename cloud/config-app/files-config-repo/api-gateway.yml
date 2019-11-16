@@ -1,0 +1,55 @@
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: false
+ribbon:
+  # zuul timeout for service discovery
+  ReadTimeout: 60000
+  SocketTimeout: 60000
+  okhttp:
+    enabled: true
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    healthcheck:
+      enabled: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+    registerWithEureka: true
+    fetchRegistry: true
+zuul:
+  debug:
+    request: true
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+  ribbon:
+    okhttp:
+      enabled: true
+  host:
+    connect-timeout-millis: 60000
+    socket-timeout-millis: 60000
+  sensitiveHeaders: null
+  routes:
+    lms-web-api:
+      stripPrefix: true
+      path: /api/lms/web/**
+      serviceId: lms-api-web-middleware
+    lms-mobile-api:
+      stripPrefix: true
+      path: /api/lms/mobile/**
+      serviceId: lms-api-mobile-middleware
+    lms-api:
+      stripPrefix: true
+      path: /api/lms/test/**
+      serviceId: lms-api-service
+
+
+---
+spring:
+  profiles: local
+server:
+  port: 8890
