@@ -37,12 +37,7 @@ transaction-logs
 secrets.yml
 .gradletasknamecache
 .sts4-cache
-cloud/config-app/files-config-repo/lms-api-services.yml
-cloud/config-app/files-config-repo/lms-api-service-local.yml
 cloud/config-app/src/main/resources/application-native.yml
-run/lms-api-service/resource/images
 be-production.sh
 be-staging.sh
 be-uat.sh
-support/orm-data-model/src/main/resources/db/diffChangeLog/liquibase-diff-changeLog.xml
-cloud/config-app/files-config-repo/lms-authen-author-service-local.yml

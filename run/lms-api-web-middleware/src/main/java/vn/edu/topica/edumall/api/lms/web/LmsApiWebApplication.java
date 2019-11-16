@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import vn.edu.topica.edumall.security.config.EnableSecurityModule;
 
 @SpringBootApplication(exclude = DataSourceAutoConfiguration.class)
+@EnableSecurityModule
 public class LmsApiWebApplication {
 
     public static void main(String[] args) {

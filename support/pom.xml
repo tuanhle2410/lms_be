@@ -21,10 +21,8 @@
 		<module>service-email</module>
 		<module>service-s3</module>
 		<module>service-sms</module>
-		<module>orm-data-model</module>
 		<module>security-common</module>
 		<module>locale-module</module>
-		<module>service-image-optimize</module>
     	<module>tenancy-config</module>
   </modules>
 </project>

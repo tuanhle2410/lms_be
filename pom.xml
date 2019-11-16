@@ -103,18 +103,6 @@
 
 			<dependency>
 				<groupId>vn.edu.topica.edumall</groupId>
-				<artifactId>service-image-optimize</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-
-			<dependency>
-				<groupId>vn.edu.topica.edumall</groupId>
-				<artifactId>orm-data-model</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-
-			<dependency>
-				<groupId>vn.edu.topica.edumall</groupId>
 				<artifactId>service-sms</artifactId>
 				<version>${project.version}</version>
 			</dependency>
