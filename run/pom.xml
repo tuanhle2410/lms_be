@@ -101,6 +101,11 @@
 		</dependency>
 
 		<dependency>
+			<groupId>vn.edu.topica.edumall</groupId>
+			<artifactId>data-model</artifactId>
+		</dependency>
+
+		<dependency>
 			<groupId>org.modelmapper</groupId>
 			<artifactId>modelmapper</artifactId>
 			<version>2.3.5</version>
