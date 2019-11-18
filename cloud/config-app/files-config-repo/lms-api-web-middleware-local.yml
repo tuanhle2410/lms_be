@@ -1,13 +1,14 @@
+#add for off eureka set to false
 eureka:
   instance:
     hostname: localhost
   client:
     healthcheck:
-      enabled: true
+      enabled: false
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
-    registerWithEureka: true
-    fetchRegistry: true
+    registerWithEureka: false
+    fetchRegistry: false
 
 ---
 spring:

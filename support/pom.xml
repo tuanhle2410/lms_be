@@ -24,5 +24,6 @@
 		<module>security-common</module>
 		<module>locale-module</module>
     	<module>tenancy-config</module>
+		<module>data-model</module>
   </modules>
 </project>

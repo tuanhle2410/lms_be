@@ -18,21 +18,21 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private UnAuthorizedEntryPoint unauthorizedHandler;
 
-    @Override
-    protected void configure(HttpSecurity httpSecurity) throws Exception {
-        httpSecurity.csrf().disable().logout().disable().formLogin().disable().sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().anonymous().and().exceptionHandling()
-                .authenticationEntryPoint(unauthorizedHandler).and()
-                .addFilterBefore(tokenRequestFilter, BasicAuthenticationFilter.class).antMatcher("/**")
-                .authorizeRequests()
-                .anyRequest().authenticated();
-        httpSecurity.cors();
-    }
-
 //    @Override
 //    protected void configure(HttpSecurity httpSecurity) throws Exception {
-//        httpSecurity.csrf().disable().authorizeRequests().antMatchers("/**").permitAll().anyRequest().authenticated()
-//                .and().exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and().sessionManagement()
-//                .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+//        httpSecurity.csrf().disable().logout().disable().formLogin().disable().sessionManagement()
+//                .sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().anonymous().and().exceptionHandling()
+//                .authenticationEntryPoint(unauthorizedHandler).and()
+//                .addFilterBefore(tokenRequestFilter, BasicAuthenticationFilter.class).antMatcher("/**")
+//                .authorizeRequests()
+//                .anyRequest().authenticated();
+//        httpSecurity.cors();
 //    }
+
+    @Override
+    protected void configure(HttpSecurity httpSecurity) throws Exception {
+        httpSecurity.csrf().disable().authorizeRequests().antMatchers("/**").permitAll().anyRequest().authenticated()
+                .and().exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and().sessionManagement()
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+    }
 }
